@@ -54,7 +54,6 @@ CreateThread(function()
     while true do
         Wait(1000)
         for _, v in pairs(GetPlayers()) do
-            -- Events make source a number, GetPlayers() returns it as a string
             v = tonumber(v) --[[@as number]]
 
             if loggedInPlayers[v] and checkUser[v] then
@@ -68,13 +67,13 @@ CreateThread(function()
                     if time[v] > 0 then
                         local _type = timeMinutes[time[v]]
                         if _type == 'minutes' then
-                            exports.qbx_core:Notify(v, 'You are AFK and will be kicked in ' .. math.ceil(time[v] / 60) .. ' minute(s)!', 'error', 10000)
+                            exports.qbx_core:Notify(v, locale('afk_warning_minutes', math.ceil(time[v] / 60)), 'error', 10000)
                         elseif _type == 'seconds' then
-                            exports.qbx_core:Notify(v, 'You are AFK and will be kicked in ' .. time[v] .. ' seconds!', 'error', 10000)
+                            exports.qbx_core:Notify(v, locale('afk_warning_seconds', time[v]), 'error', 10000)
                         end
                         time[v] -= 1
                     else
-                        DropPlayer(v --[[@as string]], 'You have been kicked for being AFK')
+                        DropPlayer(v --[[@as string]], locale('afk_kick_message'))
                     end
                 else
                     time[v] = config.timeUntilAFKKick
@@ -85,3 +84,4 @@ CreateThread(function()
         end
     end
 end)
+

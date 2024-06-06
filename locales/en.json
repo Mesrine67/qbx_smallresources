@@ -38,5 +38,10 @@
    "actions": {
       "push_vehicle": "Press [~g~SHIFT~w~] and [~g~E~w~] to push the vehicle until [~g~SHIFT~w~] release",
       "toggle_cruise_control": "Toggle Cruise Control"
+   },
+   "afk": {
+      "warning_minutes": "You are AFK and will be kicked in %s minute(s)!",
+      "warning_seconds": "You are AFK and will be kicked in %s seconds!",
+      "kick_message": "You have been kicked for being AFK"
    }
 }
